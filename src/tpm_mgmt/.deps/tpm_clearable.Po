@@ -1,0 +1,169 @@
+tpm_clearable.o: tpm_clearable.c ../../include/tpm_tspi.h \
+ /usr/include/stdlib.h /usr/include/features.h \
+ /usr/include/bits/predefs.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h \
+ /usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.5.2/include/stddef.h \
+ /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
+ /usr/include/endian.h /usr/include/bits/endian.h \
+ /usr/include/bits/byteswap.h /usr/include/sys/types.h \
+ /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+ /usr/include/time.h /usr/include/sys/select.h /usr/include/bits/select.h \
+ /usr/include/bits/sigset.h /usr/include/bits/time.h \
+ /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
+ /usr/include/alloca.h /usr/include/bits/stdlib.h \
+ /usr/local/include/trousers/tss.h /usr/local/include/tss/platform.h \
+ /usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.5.2/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/wchar.h \
+ /usr/local/include/tss/compat11b.h /usr/local/include/tss/tpm.h \
+ /usr/local/include/tss/tpm_error.h /usr/local/include/tss/tpm_ordinal.h \
+ /usr/local/include/tss/tss_error_basics.h \
+ /usr/local/include/tss/tddl_error.h /usr/local/include/tss/tss_error.h \
+ /usr/local/include/tss/tcs_typedef.h \
+ /usr/local/include/tss/tss_structs.h \
+ /usr/local/include/tss/tss_typedef.h \
+ /usr/local/include/tss/tcs_structs.h /usr/local/include/tss/tcs_error.h \
+ /usr/local/include/tss/tcs.h /usr/local/include/tss/tcs_defines.h \
+ /usr/local/include/tss/tddlapi_error.h \
+ /usr/local/include/tss/tss_defines.h /usr/local/include/tss/tddli.h \
+ /usr/local/include/tss/tspi.h /usr/local/include/trousers/trousers.h \
+ ../../include/tpm_utils.h /usr/include/string.h /usr/include/xlocale.h \
+ /usr/include/bits/string.h /usr/include/bits/string2.h \
+ /usr/include/bits/string3.h /usr/include/stdio.h /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.5.2/include/stdarg.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
+ /usr/include/getopt.h
+
+../../include/tpm_tspi.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/features.h:
+
+/usr/include/bits/predefs.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.5.2/include/stddef.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/include/bits/stdlib.h:
+
+/usr/local/include/trousers/tss.h:
+
+/usr/local/include/tss/platform.h:
+
+/usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.5.2/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/local/include/tss/compat11b.h:
+
+/usr/local/include/tss/tpm.h:
+
+/usr/local/include/tss/tpm_error.h:
+
+/usr/local/include/tss/tpm_ordinal.h:
+
+/usr/local/include/tss/tss_error_basics.h:
+
+/usr/local/include/tss/tddl_error.h:
+
+/usr/local/include/tss/tss_error.h:
+
+/usr/local/include/tss/tcs_typedef.h:
+
+/usr/local/include/tss/tss_structs.h:
+
+/usr/local/include/tss/tss_typedef.h:
+
+/usr/local/include/tss/tcs_structs.h:
+
+/usr/local/include/tss/tcs_error.h:
+
+/usr/local/include/tss/tcs.h:
+
+/usr/local/include/tss/tcs_defines.h:
+
+/usr/local/include/tss/tddlapi_error.h:
+
+/usr/local/include/tss/tss_defines.h:
+
+/usr/local/include/tss/tddli.h:
+
+/usr/local/include/tss/tspi.h:
+
+/usr/local/include/trousers/trousers.h:
+
+../../include/tpm_utils.h:
+
+/usr/include/string.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/bits/string.h:
+
+/usr/include/bits/string2.h:
+
+/usr/include/bits/string3.h:
+
+/usr/include/stdio.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.5.2/include/stdarg.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
+
+/usr/include/bits/stdio2.h:
+
+/usr/include/getopt.h:
