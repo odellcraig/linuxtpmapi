@@ -1,3 +1,14 @@
+#Some other junk
+autom4te.cache/
+src/cmds/.libs/lt-tpm_sealdata
+src/cmds/.libs/lt-tpm_unsealdata
+src/data_mgmt/tpmtoken_import
+src/data_mgmt/tpmtoken_init
+src/data_mgmt/tpmtoken_objects
+src/data_mgmt/tpmtoken_protect
+src/data_mgmt/tpmtoken_setpasswd
+
+
 # Compiled Object files
 *.slo
 *.lo
