@@ -1,3 +1,9 @@
+Craig's Notes:
+- Removed -Werror from configure.in since gcc is newer => warnings => errors
+- Needed to install libtpm_unseal1 from .deb to get unseal to work...
+- Follow all configuration and such
+
+
 
  tpm-tools
 

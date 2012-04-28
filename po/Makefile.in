@@ -30,7 +30,7 @@ gettextsrcdir = $(datadir)/gettext/po
 
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
-mkinstalldirs = $(SHELL) ${SHELL} /projects/sourceforge/tpm-tools-1.3.6/install-sh -d
+mkinstalldirs = $(SHELL) ${SHELL} /home/codell/cs592/tpmapi/install-sh -d
 mkdir_p = /bin/mkdir -p
 
 GMSGFMT_ = /usr/bin/msgfmt
