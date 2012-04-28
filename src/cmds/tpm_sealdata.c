@@ -24,84 +24,22 @@
 #include "tpm_utils.h"
 #include "tpm_seal.h"
 
-static void help(const char *aCmd)
-{
-	logCmdHelp(aCmd);
-	logCmdOption("-i, --infile FILE",
-		     _
-		     ("Filename containing key to seal. Default is STDIN."));
-	logCmdOption("-o, --outfile FILE",
-		     _
-		     ("Filename to write sealed key to.  Default is STDOUT."));
-	logCmdOption("-p, --pcr NUMBER",
-		     _
-		     ("PCR to seal data to.  Default is none.  This option can be specified multiple times to choose more than one PCR."));
-	logCmdOption("-z, --well-known", _("Use TSS_WELL_KNOWN_SECRET as the SRK secret."));
-	logCmdOption("-u, --unicode", _("Use TSS UNICODE encoding for the SRK password to comply with applications using TSS popup boxes"));
 
-}
 
-static char in_filename[PATH_MAX] = "", out_filename[PATH_MAX] = "";
 static TSS_HPCRS hPcrs = NULL_HPCRS;
 static TSS_HTPM hTpm;
 static UINT32 selectedPcrs[24];
 static UINT32 selectedPcrsLen = 0;
-static BOOL passUnicode = FALSE;
-static BOOL isWellKnown = FALSE;
 TSS_HCONTEXT hContext = 0;
 
-static int parse(const int aOpt, const char *aArg)
-{
-	int rc = -1;
-
-	switch (aOpt) {
-	case 'i':
-		if (aArg) {
-			strncpy(in_filename, aArg, PATH_MAX);
-			rc = 0;
-		}
-		break;
-	case 'o':
-		if (aArg) {
-			strncpy(out_filename, aArg, PATH_MAX);
-			rc = 0;
-		}
-		break;
-	case 'p':
-		if (aArg) {
-			selectedPcrs[selectedPcrsLen++] = atoi(aArg);
-			rc = 0;
-		}
-		break;
-	case 'u':
-		passUnicode = TRUE;
-		rc = 0;
-		break;
-	case 'z':
-		isWellKnown = TRUE;
-		rc = 0;
-		break;
-	default:
-		break;
-	}
-	return rc;
-
-}
-
-int main(int argc, char **argv)
+int sealData(char in_filename[PATH_MAX], char out_filename[PATH_MAX], BOOL passUnicode, BOOL isWellKnown)
 {
 
 	TSS_HKEY hSrk, hKey;
 	TSS_HENCDATA hEncdata;
 	TSS_HPOLICY hPolicy;
 	int iRc = -1;
-	struct option opts[] =
-	    { {"infile", required_argument, NULL, 'i'},
-	{"outfile", required_argument, NULL, 'o'},
-	{"pcr", required_argument, NULL, 'p'},
-	{"unicode", no_argument, NULL, 'u'},
-	{"well-known", no_argument, NULL, 'z'}
-	};
+
 	unsigned char line[EVP_CIPHER_block_size(EVP_aes_256_cbc()) * 16];
 	int lineLen;
 	unsigned char encData[sizeof(line) + EVP_CIPHER_block_size(EVP_aes_256_cbc())];
@@ -123,10 +61,6 @@ int main(int argc, char **argv)
 
 	initIntlSys();
 
-	if (genericOptHandler(argc, argv, "i:o:p:uz", opts,
-			      sizeof(opts) / sizeof(struct option), parse,
-			      help) != 0)
-		goto out;
 
 	if (contextCreate(&hContext) != TSS_SUCCESS)
 		goto out;
@@ -363,7 +297,7 @@ int main(int argc, char **argv)
 	BIO_puts( bdata, TPMSEAL_FTR_STRING);
 	
 	iRc = 0;
-	logSuccess(argv[0]);
+	logSuccess("tpm_sealdata");
 
 out_close:
 	contextClose(hContext);

@@ -78,12 +78,12 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_tpm_sealdata_OBJECTS = tpm_sealdata.$(OBJEXT)
+am_tpm_sealdata_OBJECTS = tpm_sealdata.$(OBJEXT) tpm_sealdatamain.$(OBJEXT)
 tpm_sealdata_OBJECTS = $(am_tpm_sealdata_OBJECTS)
 tpm_sealdata_LDADD = $(LDADD)
 tpm_sealdata_DEPENDENCIES = $(top_builddir)/lib/libtpm_tspi.la \
 	$(top_builddir)/lib/libtpm_unseal.la
-am_tpm_unsealdata_OBJECTS = tpm_unsealdata.$(OBJEXT)
+am_tpm_unsealdata_OBJECTS = tpm_unsealdata.$(OBJEXT) tpm_unsealdatamain.$(OBJEXT)
 tpm_unsealdata_OBJECTS = $(am_tpm_unsealdata_OBJECTS)
 tpm_unsealdata_LDADD = $(LDADD)
 tpm_unsealdata_DEPENDENCIES = $(top_builddir)/lib/libtpm_tspi.la \
@@ -244,8 +244,8 @@ top_srcdir = ../..
 #AM_CPPFLAGS = -I$(top_srcdir)/include -D_LINUX
 AM_CPPFLAGS = -I$(top_srcdir)/include -D_LINUX -DTSS_LIB_IS_12
 LDADD = $(top_builddir)/lib/libtpm_tspi.la -ltspi $(top_builddir)/lib/libtpm_unseal.la -ltpm_unseal
-tpm_sealdata_SOURCES = tpm_sealdata.c
-tpm_unsealdata_SOURCES = tpm_unsealdata.c
+tpm_sealdata_SOURCES = tpm_sealdata.c tpm_sealdatamain.c
+tpm_unsealdata_SOURCES = tpm_unsealdata.c tpm_unsealdatamain.c
 all: all-am
 
 .SUFFIXES:

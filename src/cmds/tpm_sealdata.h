@@ -1,7 +1,7 @@
 /*
  * The Initial Developer of the Original Code is International
  * Business Machines Corporation. Portions created by IBM
- * Corporation are Copyright (C) 2009 International Business
+ * Corporation are Copyright (C) 2005, 2006 International Business
  * Machines Corporation. All Rights Reserved.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -19,43 +19,9 @@
  * http://www.opensource.org/licenses/cpl1.0.php.
  */
 
-#include "tpm_unsealdata.h"
 #include <limits.h>
-#include "tpm_tspi.h"
+#include <openssl/evp.h>
 #include "tpm_utils.h"
-#include "tpm_unseal.h"
 
-
-
-int unsealData(char in_filename[PATH_MAX], char out_filename[PATH_MAX], BOOL srkWellKnown)
-{
-	FILE *fp;
-	int rc=0, tss_size=0, i;
-	unsigned char* tss_data = NULL;
-
-		
-	rc = tpmUnsealFile(in_filename, &tss_data, &tss_size, srkWellKnown);
-	
-	if (rc != TSS_SUCCESS) {
-		printf("%s \n", tpmUnsealStrerror(rc));
-		//goto out;
-	}
-
-	if (strlen(out_filename) == 0) {
-		for (i=0; i < tss_size; i++)
-			printf("%c", tss_data[i]);
-		goto out;
-	} else if ((fp = fopen(out_filename, "w")) == NULL) {
-			logError(_("Unable to open output file"));
-			goto out;
-	}
-
-	if (fwrite(tss_data, tss_size, 1, fp) != 1) {
-		logError(_("Unable to write output file"));
-		goto out;
-	}
-	fclose(fp);
-out:
-	free(tss_data);
-	return rc;
-}
+//Proto
+int sealData(char in_filename[PATH_MAX], char out_filename[PATH_MAX], BOOL passUnicode, BOOL isWellKnown);

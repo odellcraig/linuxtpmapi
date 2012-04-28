@@ -10,6 +10,7 @@ src/data_mgmt/tpmtoken_setpasswd
 
 
 # Compiled Object files
+*.Po
 *.slo
 *.lo
 *.o
