@@ -323,12 +323,17 @@ clean-binPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
-tpm_sealdata$(EXEEXT): $(tpm_sealdata_OBJECTS) $(tpm_sealdata_DEPENDENCIES) 
+
+
+tpm_sealdata$(EXEEXT): $(tpm_sealdata_OBJECTS) $(tpm_sealdata_DEPENDENCIES)
 	@rm -f tpm_sealdata$(EXEEXT)
 	$(LINK) $(tpm_sealdata_OBJECTS) $(tpm_sealdata_LDADD) $(LIBS)
-tpm_unsealdata$(EXEEXT): $(tpm_unsealdata_OBJECTS) $(tpm_unsealdata_DEPENDENCIES) 
+
+tpm_unsealdata$(EXEEXT): $(tpm_unsealdata_OBJECTS) $(tpm_unsealdata_DEPENDENCIES)
 	@rm -f tpm_unsealdata$(EXEEXT)
 	$(LINK) $(tpm_unsealdata_OBJECTS) $(tpm_unsealdata_LDADD) $(LIBS)
+
+
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
