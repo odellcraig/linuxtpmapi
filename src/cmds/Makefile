@@ -58,7 +58,7 @@ POST_UNINSTALL = :
 build_triplet = i686-pc-linux-gnu
 host_triplet = i686-pc-linux-gnu
 target_triplet = i686-pc-linux-gnu
-bin_PROGRAMS = tpm_sealdata$(EXEEXT) tpm_unsealdata$(EXEEXT)
+bin_PROGRAMS = tpm_sealdata$(EXEEXT) tpm_unsealdata$(EXEEXT) tpm.a
 subdir = src/cmds
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -101,7 +101,7 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(tpm_sealdata_SOURCES) $(tpm_unsealdata_SOURCES)
+SOURCES = $(tpm_sealdata_SOURCES) $(tpm_unsealdata_SOURCES) apiexample.c
 DIST_SOURCES = $(tpm_sealdata_SOURCES) $(tpm_unsealdata_SOURCES)
 ETAGS = etags
 CTAGS = ctags
@@ -324,6 +324,13 @@ clean-binPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
+apiexample$(EXEEXT): tpm_sealdata.$(OBJEXT) tpm_unsealdata.$(OBJEXT) apiexample.$(OBJEXT) 
+	@rm -f apiexample$(EXEEXT)
+	$(LINK) tpm_sealdata.$(OBJEXT) tpm_unsealdata.$(OBJEXT) $(LDADD) $(LIBS)
+
+tpm.a: tpm_sealdata.$(OBJEXT) tpm_unsealdata.$(OBJEXT)
+	@rm -f tpm.a
+	@ar rcs libtpm.a tpm_sealdata.$(OBJEXT) tpm_unsealdata.$(OBJEXT)
 
 tpm_sealdata$(EXEEXT): $(tpm_sealdata_OBJECTS) $(tpm_sealdata_DEPENDENCIES)
 	@rm -f tpm_sealdata$(EXEEXT)

@@ -323,9 +323,16 @@ $(RECURSIVE_TARGETS):
 	done; \
 	if test "$$dot_seen" = "no"; then \
 	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
-	fi; test -z "$$fail"
+	fi; test -z "$$fail" 
+
+libtpm.a:
+	@rm -f libtpm.a
+	@ar rcs libtpm.a cmds/tpm_sealdata.$(OBJEXT) cmds/tpm_unsealdata.$(OBJEXT)
+	@cp cmds/tpm_sealdata.h includes/
+	@cp cmds/tpm_unsealdata.h includes/
 
 $(RECURSIVE_CLEAN_TARGETS):
+	@rm -f libtpm.a
 	@fail= failcom='exit 1'; \
 	for f in x $$MAKEFLAGS; do \
 	  case $$f in \
